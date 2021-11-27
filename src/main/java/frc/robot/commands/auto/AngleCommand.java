@@ -12,6 +12,7 @@ public class AngleCommand extends CommandBase {
   /** Creates a new AngleCommand. */
   DriveSubsystem m_drive;
   Timer timer = new Timer();
+  boolean finish = false;
 
   public AngleCommand(DriveSubsystem drive) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,10 +30,11 @@ public class AngleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (timer.get() > 0 && timer.get() < 4) {
+    if (timer.get() > 0 && timer.get() <= 1) {
       m_drive.TankDrive(-0.5, 0.5);
     } else {
       m_drive.TankDrive(0, 0);
+      finish = true;
     }
   }
 
@@ -44,6 +46,6 @@ public class AngleCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finish;
   }
 }

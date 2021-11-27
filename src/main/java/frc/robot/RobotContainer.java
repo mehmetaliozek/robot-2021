@@ -31,8 +31,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_robotDrive.setDefaultCommand(new DriveCommand(m_robotDrive, () -> m_driverController.getRawAxis(1) * 0.8,
-        () -> -m_driverController.getRawAxis(4) * -0.8));
+    m_robotDrive.setDefaultCommand(new DriveCommand(m_robotDrive, () -> -m_driverController.getRawAxis(1) * 0.8 ,() -> m_driverController.getRawAxis(4) * 0.8));
   }
 
   /**
@@ -50,7 +49,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-  // An ExampleCommand will run in autonomous
-  return new AutoCommand(m_robotDrive);
+    // An ExampleCommand will run in autonomous
+    return new AutoCommand(m_robotDrive);
   }
 }
