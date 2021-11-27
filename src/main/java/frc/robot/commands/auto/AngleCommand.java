@@ -12,7 +12,7 @@ public class AngleCommand extends CommandBase {
   /** Creates a new AngleCommand. */
   DriveSubsystem m_drive;
   Timer timer = new Timer();
-  boolean finish = false;
+  boolean finish;
 
   public AngleCommand(DriveSubsystem drive) {
     // Use addRequirements() here to declare subsystem dependencies.
